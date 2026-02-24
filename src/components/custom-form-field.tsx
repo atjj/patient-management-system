@@ -5,8 +5,14 @@ import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { FormFieldType } from "./forms";
+import { FormFieldType } from "./forms/types";
 import Image from "next/image";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+import { Select, SelectContent, SelectTrigger, SelectValue } from "./ui/select";
+import { Textarea } from "./ui/textarea";
+import { Checkbox } from "./ui/checkbox";
 interface CustomProps {
   id: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -20,24 +26,34 @@ interface CustomProps {
   disabled?: boolean;
   dateFormat?: string;
   showTimeSelect?: boolean;
-  childern?: React.ReactNode;
+  children?: React.ReactNode;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   renderSkeleton?: (field: any) => React.ReactNode;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const RenderField = ({
   field,
   fieldState,
   props,
 }: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   field: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fieldState: any;
   props: CustomProps;
 }) => {
-  const { fieldType, icon, iconAlt, placeholder, id } = props;
+  const {
+    fieldType,
+    icon,
+    iconAlt,
+    placeholder,
+    id,
+    showTimeSelect,
+    dateFormat,
+    renderSkeleton,
+  } = props;
 
-  switch (props.fieldType) {
+  switch (fieldType) {
     case FormFieldType.INPUT:
       return (
         <div className="flex items-center p-1 rounded-md border-1 border-[#363A3D] bg-[#1A1D21]">
@@ -70,6 +86,63 @@ const RenderField = ({
           value={field.value}
           onChange={field.onChange}
         />
+      );
+    case FormFieldType.DATE_PICKER:
+      return (
+        <div className="flex items-center p-1 h-11 rounded-md border-1 border-[#363A3D] bg-[#1A1D21]">
+          <Image
+            src="/assets/calendar.svg"
+            height={24}
+            width={24}
+            alt="calendar"
+            className="ml-2"
+          />
+          <DatePicker
+            selected={field.value}
+            placeholderText={placeholder}
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            onChange={(date: any) => field.onChange(date)}
+            dateFormat={dateFormat ?? "MM/dd/yyyy"}
+            showTimeSelect={showTimeSelect ?? false}
+            timeInputLabel="Time:"
+            className="border-none rounded-none px-2 outline-none focus-visible:border-none focus-visible:ring-0"
+          />
+        </div>
+      );
+    case FormFieldType.SKELETON:
+      return renderSkeleton ? renderSkeleton(field) : null;
+    case FormFieldType.SELECT:
+      return (
+        <Select onValueChange={field.onChange} defaultValue={field.value}>
+          <SelectTrigger className="dark:bg-[#1A1D21] dark:h-11 dark:hover:bg-[#1A1D21]">
+            <SelectValue placeholder={placeholder} />
+          </SelectTrigger>
+          <SelectContent className="bg-[#1A1D21]">
+            {props.children}
+          </SelectContent>
+        </Select>
+      );
+    case FormFieldType.TEXTAREA:
+      return (
+        <Textarea
+          placeholder={placeholder}
+          {...field}
+          disabled={props.disabled}
+          className="dark:bg-[#1A1D21]"
+        />
+      );
+    case FormFieldType.CHECKBOX:
+      return (
+        <div className="flex items-center gap-4">
+          <Checkbox
+            id={props.name}
+            checked={field.value}
+            onCheckedChange={field.onChange}
+          />
+          <label htmlFor={props.name} className="text-[#ABB8C4] text-lg">
+            {props.label}
+          </label>
+        </div>
       );
     default:
       break;

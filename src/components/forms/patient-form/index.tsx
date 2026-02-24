@@ -3,24 +3,18 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-
+import { useRouter } from "next/navigation";
 import { FieldGroup } from "@/components/ui/field";
 
 import CustomFormField from "@/components/custom-form-field";
 import SubmitButton from "@/components/submit-button";
 import { useState } from "react";
 import { UserFormValidation } from "@/lib/validation";
-export enum FormFieldType {
-  INPUT = "input",
-  TEXTAREA = "textarea",
-  PHONE_INPUT = "phoneInput",
-  CHECKBOX = "checkbox",
-  DATE_PICKER = "datePicker",
-  SELECT = "select",
-  SKELETON = "skeleton",
-}
+import { createUser } from "@/lib/actions/patient.actions";
+import { FormFieldType } from "../types";
 
 export function PatientForm() {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const form = useForm<z.infer<typeof UserFormValidation>>({
     resolver: zodResolver(UserFormValidation),
@@ -43,7 +37,9 @@ export function PatientForm() {
         email,
         phone,
       };
-      console.log(userData);
+      const userId = await createUser(userData);
+
+      if (userId) router.push(`/patients/${userId}/register`);
     } catch (error) {
       console.log(error);
     }
