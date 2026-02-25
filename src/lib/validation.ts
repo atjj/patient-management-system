@@ -13,6 +13,17 @@ export const UserFormValidation = z.object({
     ),
 });
 
+export const AppointmentFormValidation = z.object({
+  primaryPhysician: z.string().min(2, "Select at least one doctor"),
+  schedule: z.coerce.date(),
+  reason: z
+    .string()
+    .min(5, "Reason title must be at least 5 characters.")
+    .max(500, "Reason title must be at most 500 characters."),
+  notes: z.string().optional(),
+  cancellationReason: z.string().optional(),
+});
+
 export const PatientFormValidation = z.object({
   name: z
     .string()

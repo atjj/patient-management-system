@@ -105,7 +105,7 @@ const RenderField = ({
             dateFormat={dateFormat ?? "MM/dd/yyyy"}
             showTimeSelect={showTimeSelect ?? false}
             timeInputLabel="Time:"
-            className="border-none rounded-none px-2 outline-none focus-visible:border-none focus-visible:ring-0"
+            className="border-none rounded-none px-2 w-80 outline-none focus-visible:border-none focus-visible:ring-0"
           />
         </div>
       );

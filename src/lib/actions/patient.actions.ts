@@ -42,6 +42,18 @@ export const getUser = async (userId: string) => {
   }
 };
 
+export const getPatient = async (userId: string) => {
+  try {
+    const patients = await databases.listRows({
+      databaseId: DATABASE_ID!,
+      tableId: PATIENT_TABLE_ID!,
+      queries: [Query.equal("userId", userId)],
+    });
+    return patients;
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const registerPatient = async ({
   identificationDocument,
   ...patient

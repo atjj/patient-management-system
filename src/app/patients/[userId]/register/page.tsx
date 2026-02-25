@@ -28,7 +28,7 @@ export default async function Registration({
       </section>
       <Image
         src="/assets/register-img.png"
-        alt={"image"}
+        alt={"register"}
         height={1000}
         width={1000}
         className="max-w-[390px] hidden xl:block"
