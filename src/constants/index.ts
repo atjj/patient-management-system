@@ -16,3 +16,9 @@ export const identificationTypes = [
   "Birth Certificate I",
   "Birth Certificate II",
 ];
+
+export const statusIcon = {
+  scheduled: "/assets/scheduledIcon.svg",
+  pending: "/assets/pendingIcon.svg",
+  cancelled: "/assets/cancelledIcon.svg",
+};

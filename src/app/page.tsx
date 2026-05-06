@@ -1,10 +1,18 @@
 import { PatientForm } from "@/components/forms";
+import PasskeyModal from "@/components/passkey-modal";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const isAdmin = (await searchParams).admin === "true";
+
   return (
     <div className="flex min-h-screen max-h-screen">
+      {isAdmin && <PasskeyModal />}
       <section className="no-scrollbar container my-auto">
         <div className="max-w-[496px] mx-auto">
           <Image
@@ -17,7 +25,7 @@ export default function Home() {
           <PatientForm />
           <div className="flex justify-between text-[#76828D] mt-1">
             <p>@carepulse copyright</p>
-            <Link href={"/admin"} className="text-green-600">
+            <Link href={"/?admin=true"} className="text-green-600">
               Admin
             </Link>
           </div>

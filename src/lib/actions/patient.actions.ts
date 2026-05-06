@@ -49,7 +49,7 @@ export const getPatient = async (userId: string) => {
       tableId: PATIENT_TABLE_ID!,
       queries: [Query.equal("userId", userId)],
     });
-    return patients;
+    return JSON.parse(JSON.stringify(patients.rows[0]));
   } catch (error) {
     console.log(error);
   }

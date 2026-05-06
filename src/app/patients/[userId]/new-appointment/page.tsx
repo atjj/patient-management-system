@@ -25,7 +25,7 @@ export default async function NewAppointment({
           <AppointmentForm
             type="create"
             userId={userId}
-            patientId={patient?.rows[0].$id as string}
+            patientId={patient.$id as string}
           />
           <p className="mt-15 text-[#76828D]">@carepulse copyright</p>
         </div>
