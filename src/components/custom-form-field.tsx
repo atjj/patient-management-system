@@ -105,7 +105,7 @@ const RenderField = ({
             dateFormat={dateFormat ?? "MM/dd/yyyy"}
             showTimeSelect={showTimeSelect ?? false}
             timeInputLabel="Time:"
-            className="border-none rounded-none px-2 w-80 outline-none focus-visible:border-none focus-visible:ring-0"
+            className="border-none rounded-none px-2 w-60  outline-none focus-visible:border-none focus-visible:ring-0"
           />
         </div>
       );
@@ -138,8 +138,12 @@ const RenderField = ({
             id={props.name}
             checked={field.value}
             onCheckedChange={field.onChange}
+            className="cursor-pointer"
           />
-          <label htmlFor={props.name} className="text-[#ABB8C4] text-lg">
+          <label
+            htmlFor={props.name}
+            className="text-[#ABB8C4] cursor-pointer text-lg"
+          >
             {props.label}
           </label>
         </div>

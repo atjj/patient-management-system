@@ -51,7 +51,7 @@ export function PatientForm() {
         <section>
           <h1 className="text-[36px] font-bold">Hi there...</h1>
           <p className="text-[18px] font-medium text-[#ABB8C4]">
-            Get Started with Appointments.
+            Schedule your first appointments.
           </p>
         </section>
         <CustomFormField

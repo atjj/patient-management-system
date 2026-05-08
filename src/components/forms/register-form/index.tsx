@@ -123,7 +123,7 @@ export function RegisterForm({ userId }: { userId: string }) {
             placeholder="+996 111 111 111"
           />
         </div>
-        <div className="flex flex-col gap-6 xl:flex-row">
+        <div className="flex flex-col gap-6 md:flex-row">
           <CustomFormField
             id="register-form"
             control={form.control}
@@ -141,19 +141,21 @@ export function RegisterForm({ userId }: { userId: string }) {
             renderSkeleton={(field) => (
               <FieldGroup>
                 <RadioGroup
-                  className="flex items-center h-11 gap-6 xl:justify-between"
+                  className="flex items-center h-11 justify-between"
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
                   {genderOptions.map((option) => (
                     <div
-                      className="flex items-center hover:bg-[#1A1D21] text-[#CDCECF] gap-[10px] border border-[#363A3D] border-dashed px-7 h-full rounded-[5px]"
+                      className="flex items-center hover:bg-[#1A1D21] text-[#CDCECF] gap-[8px] border border-[#363A3D] border-dashed px-3 lg:px-7 h-full rounded-[5px]"
                       key={option}
                     >
-                      <RadioGroupItem value={option} id={option} />
-                      <Label className="cursor-pointer" htmlFor={option}>
-                        {option}
-                      </Label>
+                      <RadioGroupItem
+                        className="cursor-pointer"
+                        value={option}
+                        id={option}
+                      />
+                      <Label htmlFor={option}>{option}</Label>
                     </div>
                   ))}
                 </RadioGroup>

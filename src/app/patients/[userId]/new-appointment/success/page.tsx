@@ -19,7 +19,7 @@ export default async function SuccessPage(props: {
   const appointmentId = searchParams.appointmentId;
   const appointment = await getAppointment(appointmentId as string);
   return (
-    <div className="h-screen max-h-screen px-[5%] flex flex-col items-center">
+    <div className="min-h-screen px-[5%] flex flex-col items-center">
       <div className="flex items-center justify-center mt-5">
         <Link href="/">
           <Image
@@ -32,24 +32,25 @@ export default async function SuccessPage(props: {
         </Link>
       </div>
 
-      <section className="flex flex-col mt-5 items-center justify-center">
+      <section className="flex flex-col items-center gap-[10px] mt-[100px]">
         <Image
           src="/assets/success.svg"
           height={200}
           width={200}
           alt="success"
+          className="w-[100px] h-[100px]"
         />
-        <h2 className="text-[36px] max-w-[612px] text-center font-bold">
+        <h2 className="text-[26px] md:text-[36px] max-w-[600px] text-center font-bold">
           Your <span className="text-[#4AC97E]">appointment request</span> has
           been successfully submitted!
         </h2>
-        <p className="mt-[24px] text-lg font-medium text-[#ABB8C4]">
+        <p className="mt-[14px] md:text-lg text-center font-medium text-[#ABB8C4]">
           We&apos;ll be in touch shortly to confirm.
         </p>
       </section>
 
-      <section className="flex items-center gap-8 mx-auto max-w-[944px] border-y border-[#363A3D99] px-[69px] py-[44px] mt-[44px] ">
-        <p className="text-[#ABB8C4] text-[24px] font-medium">
+      <section className="flex flex-col lg:flex-row items-center gap-5 lg:gap-8 mx-auto max-w-[944px] border-y border-[#363A3D99] md:px-[69px] py-[22px] lg:py-[44px] mt-[44px] ">
+        <p className="text-[#ABB8C4] text-[16px] md:text-[24px] font-medium">
           Requested appointment details:
         </p>
         <div className="flex items-center gap-3 font-semibold">
@@ -64,7 +65,7 @@ export default async function SuccessPage(props: {
             {appointment?.rows[0].primaryPhysician}
           </p>
         </div>
-        <div className="flex items-center gap-2 text-lg text-[#ABB8C4] font-medium">
+        <div className="flex items-center gap-2 text-md md:text-lg text-[#ABB8C4] font-medium">
           <Image
             src="/assets/calendar.svg"
             height={24}
@@ -75,7 +76,7 @@ export default async function SuccessPage(props: {
         </div>
       </section>
       <Button
-        className="mt-10 text-md dark:hover:bg-[#24AE7C] text-[#FFFFFF]"
+        className="mt-10 text-md dark:hover:bg-[#24AE7C] mb-10  text-[#FFFFFF]"
         variant="outline"
         asChild
       >
