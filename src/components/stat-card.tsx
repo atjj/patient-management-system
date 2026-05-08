@@ -9,8 +9,8 @@ interface StatCardProps {
 }
 const StatCard = ({ count, label, icon, type }: StatCardProps) => {
   return (
-    <div className="py-[32px] px-[24px] border-1 rounded-[12px] w-full max-w-[400px] bg-[#1C2023]">
-      <div className="flex items-center  gap-4">
+    <div className="flex flex-col items-center md:items-start  py-[32px] px-[24px] border-1 rounded-[12px] w-full md:max-w-[240px] lg:max-w-[300px] xl:max-w-[400px] bg-[#1C2023]">
+      <div className="flex items-center gap-4">
         <Image
           src={icon}
           height={40}

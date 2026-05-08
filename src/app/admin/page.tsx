@@ -10,7 +10,7 @@ const AdminPage = async () => {
 
   return (
     <div className="mx-auto flex max-w-7xl flex-col space-y-14">
-      <header className="flex justify-between items-center py-[24px] px-[48px] bg-[#0D0F10] rounded-[20px]">
+      <header className="flex justify-between items-center py-[24px] px-[16px] md:px-[48px] bg-[#0D0F10] rounded-[20px]">
         <Link href="/" className="cursor-pointer">
           <Image
             src="/assets/Logo.svg"
@@ -20,17 +20,19 @@ const AdminPage = async () => {
             className="h-8 w-fit"
           />
         </Link>
-        <p>Admin Dashboard</p>
+        <p>Admin</p>
       </header>
 
-      <main className="px-5">
+      <main className="px-4">
         <section className="w-full space-y-4">
-          <h1 className="text-[36px] font-bold">Welcome, Admin</h1>
+          <h1 className="text-[32px] md:text-[36px] font-bold">
+            Welcome, Admin
+          </h1>
           <p className="text-[#ABB8C4] font-medium">
             Start day with managing new appointments
           </p>
         </section>
-        <section className="flex justify-between items-center mt-[42px] mb-[62px]">
+        <section className="flex flex-col gap-5 md:gap-0 md:flex-row md:justify-between items-center mt-[42px] mb-[62px]">
           <StatCard
             type="appointments"
             count={Number(appointments?.totalAppointments)}

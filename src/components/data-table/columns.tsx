@@ -1,14 +1,4 @@
 "use client";
-/* import { MoreHorizontal } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"; */
 import { ColumnDef } from "@tanstack/react-table";
 import type { Appointment } from "../../../types/appwrite.types";
 import StatusBadge from "../status-badge";
@@ -53,7 +43,7 @@ export const columns: ColumnDef<Appointment>[] = [
         (doc) => doc.name === row.original.primaryPhysician,
       );
       return (
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 pr-5 md:pr-0">
           <Image
             src={doctor?.image || ""}
             alt={doctor?.name || ""}
