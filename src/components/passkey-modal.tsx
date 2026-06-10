@@ -80,7 +80,7 @@ const PasskeyModal = () => {
             />
           </AlertDialogTitle>
           <AlertDialogDescription className="text-left text-[#ABB8C4] text-md font-medium mt-[16px]">
-            To access the admin page, please enter the passkey.
+            To access the admin page, please enter the passkey.<p>Demo-passkey: 123456</p>
           </AlertDialogDescription>
         </AlertDialogHeader>
         <div className="my-[40px]">
